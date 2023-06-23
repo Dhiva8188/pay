@@ -1,13 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // Rest of your existing code
-  
-  const showQRCodeButton = document.getElementById('showQRCode');
-  const qrCodeModal = document.getElementById('qrCodeModal');
-  
-  showQRCodeButton.addEventListener('click', function() {
-    $('#qrCodeModal').modal('show');
-  });
-document.addEventListener('DOMContentLoaded', function() {
   const itemsList = document.getElementById('items');
   const cartItemsContainer = document.getElementById('cart-items');
   const totalElement = document.getElementById('total');
