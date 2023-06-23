@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Billing Webpage</title>
+  <link rel="stylesheet" href="gpt.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+  <header>
+    <h1>Billing Webpage</h1>
+  </header>
+
+  <main>
+    <section id="items-list">
+      <h2>Items List</h2>
+      <ul id="items">
+        <li>
+          <span class="item-name">Full Stack development</span>
+          <span class="item-price"> $10</span>
+          <button class="add-to-cart">Add to Cart</button>
+        </li>
+        <li>
+          <span class="item-name">Joy of Python</span>
+          <span class="item-price"> $15</span>
+          <button class="add-to-cart">Add to Cart</button>
+        </li>
+        <!-- Add more items as needed -->
+      </ul>
+    </section>
+
+    <section id="cart">
+      <h2>Cart</h2>
+      <ul id="cart-items"></ul>
+      <p id="total">Total: $0</p>
+      <button id="checkout">Checkout</button>
+    </section>
+  </main>
+
+  <script src="gpt.js"></script>
+</body>
+  <body>
+    
+  
+    <br>
+  
+    <label for="paid-amount">Paid Amount:</label>
+    <input type="number" id="paid-amount">
+  
+    <br>
+  
+    <label for="payment-method">Payment Method:</label>
+    <select id="payment-method">
+      <option value="netbanking">NetBanking</option>
+      <option value="googlepay">Google Pay</option>
+      <option value="phonepay">PhonePe</option>
+    </select>
+  
+    <br>
+  
+    <!-- <button id="calculate">PAY</button> -->
+    <button id="showQRCode" class="btn btn-primary">Show Payment QR Code</button>
+  
+    <br>
+  
+    <p id="balance"></p>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="your-script.js"></script>
+  
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const totalElement = document.getElementById('total');
+        const paidAmountInput = document.getElementById('paid-amount');
+        const paymentMethodSelect = document.getElementById('payment-method');
+        const calculateButton = document.getElementById('calculate');
+        const balanceElement = document.getElementById('balance');
+  
+        calculateButton.addEventListener('click', calculateBalance);
+  
+        function calculateBalance() {
+          const total = parseFloat(totalElement.innerText.replace('$', ''));
+          const paidAmount = parseFloat(paidAmountInput.value);
+          const paymentMethod = paymentMethodSelect.value;
+  
+          if (isNaN(paidAmount)) {
+            balanceElement.innerText = 'Invalid amount';
+            return;
+          }
+  
+          const balance = paidAmount - total;
+  
+          if (balance < 0) {
+            balanceElement.innerText = 'Insufficient payment';
+          } else {
+            balanceElement.innerText = `Paid using ${paymentMethod.toUpperCase()}. Balance: $${balance.toFixed(2)}`;
+          }
+        }
+      });
+    </script>
+  </body>
+ 
+</style>
+</head>
+<body>
+
+  </html>
